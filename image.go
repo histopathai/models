@@ -16,17 +16,17 @@ const (
 )
 
 type Image struct {
-	ID            string `firestore:"id"`
-	Filename      string `firestore:"filename"`
-	Width         int    `firestore:"width"`
-	Height        int    `firestore:"height"`
-	Format        string `firestore:"format"`
-	SizeBytes     int64  `firestore:"size_bytes"`
-	WorkspaceID   string `firestore:"workspace_id"` // ID of the associated workspace
-	OriginPath    string `firestore:"origin_path,omitempty"`
-	ProcessedPath string `firestore:"processed_path,omitempty"`
-
-	CreatedAt time.Time   `firestore:"created_at"`
-	UpdatedAt time.Time   `firestore:"updated_at"`
-	Status    ImageStatus `firestore:"status"`
+	ID            string      `firestore:"id"`
+	Filename      string      `firestore:"filename"`
+	Width         int         `firestore:"width"`
+	Height        int         `firestore:"height"`
+	Format        string      `firestore:"format"`
+	SizeBytes     int64       `firestore:"size_bytes"`
+	WorkspaceID   string      `firestore:"workspace_id"` // ID of the associated workspace
+	PatientID     *string     `firestore:"patient_id,omitempty"`
+	OriginPath    string      `firestore:"origin_path,omitempty"`
+	ProcessedPath string      `firestore:"processed_path,omitempty"`
+	CreatedAt     time.Time   `firestore:"created_at"`
+	UpdatedAt     time.Time   `firestore:"updated_at"`
+	Status        ImageStatus `firestore:"status"`
 }
