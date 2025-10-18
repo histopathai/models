@@ -5,24 +5,16 @@ import (
 )
 
 type Workspace struct {
-	ID          string `json:"id"`
-	Name        string `json:"name"`
-	OrganType   string `json:"organ_type"`
-	CreatorID   string `json:"creator_id"` // User ID of the creator
-	Description string `json:"description"`
-
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt time.Time `json:"updated_at"`
-}
-
-func (ws *Workspace) ToJSON() map[string]interface{} {
-	return map[string]interface{}{
-		"id":          ws.ID,
-		"name":        ws.Name,
-		"organ_type":  ws.OrganType,
-		"creator_id":  ws.CreatorID,
-		"description": ws.Description,
-		"created_at":  ws.CreatedAt,
-		"updated_at":  ws.UpdatedAt,
-	}
+	ID             string    `json:"id"`
+	Name           string    `json:"name"`
+	OrganType      string    `firestore:"organ_type"`
+	CreatorID      string    `firestore:"creator_id"` // User ID of the creator
+	Description    string    `firestore:"description"`
+	License        string    `firestore:"license"`
+	Organization   string    `firestore:"organization"`
+	ResourceURL    string    `firestore:"resource_url"`
+	ReleaseYear    int       `firestore:"release_year,omitempty"`
+	ReleaseVersion string    `firestore:"release_version,omitempty"`
+	CreatedAt      time.Time `firestore:"created_at"`
+	UpdatedAt      time.Time `firestore:"updated_at"`
 }
