@@ -5,8 +5,8 @@ import (
 )
 
 type Workspace struct {
-	ID             string    `json:"id"`
-	Name           string    `json:"name"`
+	ID             string    `firestore:"id,omitempty"`
+	Name           string    `firestore:"name"`
 	OrganType      string    `firestore:"organ_type"`
 	CreatorID      string    `firestore:"creator_id"` // User ID of the creator
 	Description    string    `firestore:"description"`
