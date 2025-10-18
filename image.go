@@ -23,7 +23,7 @@ type Image struct {
 	Format        string      `firestore:"format"`
 	SizeBytes     int64       `firestore:"size_bytes"`
 	WorkspaceID   string      `firestore:"workspace_id"` // ID of the associated workspace
-	PatientID     *string     `firestore:"patient_id,omitempty"`
+	PatientID     string      `firestore:"patient_id,omitempty"`
 	OriginPath    string      `firestore:"origin_path,omitempty"`
 	ProcessedPath string      `firestore:"processed_path,omitempty"`
 	CreatedAt     time.Time   `firestore:"created_at"`
