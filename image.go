@@ -49,3 +49,46 @@ func (img *Image) ToMap() map[string]interface{} {
 		"status":         img.Status,
 	}
 }
+
+// From Map
+func (img *Image) FromMap(data map[string]interface{}) {
+	if v, ok := data["id"].(string); ok {
+		img.ID = v
+	}
+	if v, ok := data["filename"].(string); ok {
+		img.Filename = v
+	}
+	if v, ok := data["width"].(int64); ok {
+		img.Width = int(v)
+	}
+	if v, ok := data["height"].(int64); ok {
+		img.Height = int(v)
+	}
+	if v, ok := data["format"].(string); ok {
+		img.Format = v
+	}
+	if v, ok := data["size_bytes"].(int64); ok {
+		img.SizeBytes = v
+	}
+	if v, ok := data["workspace_id"].(string); ok {
+		img.WorkspaceID = v
+	}
+	if v, ok := data["patient_id"].(string); ok {
+		img.PatientID = v
+	}
+	if v, ok := data["origin_path"].(string); ok {
+		img.OriginPath = v
+	}
+	if v, ok := data["processed_path"].(string); ok {
+		img.ProcessedPath = v
+	}
+	if v, ok := data["created_at"].(time.Time); ok {
+		img.CreatedAt = v
+	}
+	if v, ok := data["updated_at"].(time.Time); ok {
+		img.UpdatedAt = v
+	}
+	if v, ok := data["status"].(string); ok {
+		img.Status = ImageStatus(v)
+	}
+}

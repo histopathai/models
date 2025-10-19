@@ -36,3 +36,43 @@ func (w *Workspace) ToMap() map[string]interface{} {
 		"updated_at":      w.UpdatedAt,
 	}
 }
+
+// FromMap populates Workspace from map data
+func (w *Workspace) FromMap(data map[string]interface{}) {
+	if v, ok := data["id"].(string); ok {
+		w.ID = v
+	}
+	if v, ok := data["name"].(string); ok {
+		w.Name = v
+	}
+	if v, ok := data["organ_type"].(string); ok {
+		w.OrganType = v
+	}
+	if v, ok := data["creator_id"].(string); ok {
+		w.CreatorID = v
+	}
+	if v, ok := data["description"].(string); ok {
+		w.Description = v
+	}
+	if v, ok := data["license"].(string); ok {
+		w.License = v
+	}
+	if v, ok := data["organization"].(string); ok {
+		w.Organization = v
+	}
+	if v, ok := data["resource_url"].(string); ok {
+		w.ResourceURL = v
+	}
+	if v, ok := data["release_year"].(int64); ok {
+		w.ReleaseYear = int(v)
+	}
+	if v, ok := data["release_version"].(string); ok {
+		w.ReleaseVersion = v
+	}
+	if v, ok := data["created_at"].(time.Time); ok {
+		w.CreatedAt = v
+	}
+	if v, ok := data["updated_at"].(time.Time); ok {
+		w.UpdatedAt = v
+	}
+}
