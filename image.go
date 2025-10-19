@@ -15,6 +15,8 @@ const (
 	StatusProcessingFailed ImageStatus = "processing_failed"
 )
 
+var SupportedImageFormats = []string{"jpeg", "png", "tiff", "bmp", "gif", "svs", "ndpi", "dng", "png", "jpg", "tif"}
+
 type Image struct {
 	ID            string      `firestore:"id"`
 	Filename      string      `firestore:"filename"`
