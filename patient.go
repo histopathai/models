@@ -13,3 +13,17 @@ type Patient struct {
 	CreatedAt time.Time `firestore:"created_at"`
 	UpdatedAt time.Time `firestore:"updated_at"`
 }
+
+// ToMap converts Patient to map for Firestore
+func (p *Patient) ToMap() map[string]interface{} {
+	return map[string]interface{}{
+		"id":         p.ID,
+		"age":        p.Age,
+		"gender":     p.Gender,
+		"race":       p.Race,
+		"disease":    p.Disease,
+		"history":    p.History,
+		"created_at": p.CreatedAt,
+		"updated_at": p.UpdatedAt,
+	}
+}

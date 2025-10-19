@@ -30,3 +30,22 @@ type Image struct {
 	UpdatedAt     time.Time   `firestore:"updated_at"`
 	Status        ImageStatus `firestore:"status"`
 }
+
+// ToMap converts Image to map for Firestore
+func (img *Image) ToMap() map[string]interface{} {
+	return map[string]interface{}{
+		"id":             img.ID,
+		"filename":       img.Filename,
+		"width":          img.Width,
+		"height":         img.Height,
+		"format":         img.Format,
+		"size_bytes":     img.SizeBytes,
+		"workspace_id":   img.WorkspaceID,
+		"patient_id":     img.PatientID,
+		"origin_path":    img.OriginPath,
+		"processed_path": img.ProcessedPath,
+		"created_at":     img.CreatedAt,
+		"updated_at":     img.UpdatedAt,
+		"status":         img.Status,
+	}
+}

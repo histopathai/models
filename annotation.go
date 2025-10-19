@@ -33,3 +33,45 @@ type Annotation struct {
 	CreatedAt time.Time `firestore:"created_at"`
 	UpdatedAt time.Time `firestore:"updated_at"`
 }
+
+func (p *Point) ToMap() map[string]interface{} {
+	return map[string]interface{}{
+		"x": p.X,
+		"y": p.Y,
+	}
+}
+
+// ToMap converts Annotation to map for Firestore
+func (a *Annotation) ToMap() map[string]interface{} {
+	polygonMaps := make([]map[string]interface{}, len(a.Polygon))
+	for i, p := range a.Polygon {
+		polygonMaps[i] = p.ToMap()
+	}
+
+	return map[string]interface{}{
+		"id":         a.ID,
+		"image_id":   a.ImageID,
+		"creator_id": a.CreatorID,
+		"type_id":    a.TypeID,
+		"polygon":    polygonMaps,
+		"class":      a.Class,
+		"score":      a.Score,
+		"created_at": a.CreatedAt,
+		"updated_at": a.UpdatedAt,
+	}
+}
+
+func (at *AnnotationType) ToMap() map[string]interface{} {
+	return map[string]interface{}{
+		"id":                    at.ID,
+		"name":                  at.Name,
+		"desc":                  at.Desc,
+		"score_enable":          at.ScoreEnable,
+		"score_name":            at.ScoreName,
+		"score_range":           at.ScoreRange,
+		"classification_enable": at.ClassificationEnable,
+		"class_list":            at.ClassList,
+		"created_at":            at.CreatedAt,
+		"updated_at":            at.UpdatedAt,
+	}
+}

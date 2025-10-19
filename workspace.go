@@ -18,3 +18,21 @@ type Workspace struct {
 	CreatedAt      time.Time `firestore:"created_at"`
 	UpdatedAt      time.Time `firestore:"updated_at"`
 }
+
+// ToMap converts Workspace to map for Firestore
+func (w *Workspace) ToMap() map[string]interface{} {
+	return map[string]interface{}{
+		"id":              w.ID,
+		"name":            w.Name,
+		"organ_type":      w.OrganType,
+		"creator_id":      w.CreatorID,
+		"description":     w.Description,
+		"license":         w.License,
+		"organization":    w.Organization,
+		"resource_url":    w.ResourceURL,
+		"release_year":    w.ReleaseYear,
+		"release_version": w.ReleaseVersion,
+		"created_at":      w.CreatedAt,
+		"updated_at":      w.UpdatedAt,
+	}
+}
