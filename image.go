@@ -1,6 +1,7 @@
 package models
 
 import (
+	"strings"
 	"time"
 )
 
@@ -15,7 +16,32 @@ const (
 	StatusProcessingFailed ImageStatus = "processing_failed"
 )
 
-var SupportedImageFormats = []string{"jpeg", "png", "tiff", "bmp", "gif", "svs", "ndpi", "dng", "png", "jpg", "tif"}
+var SupportedImageFormats = map[string]bool{
+	"jpeg": true,
+	"jpg":  true,
+	"png":  true,
+	"tiff": true,
+	"tif":  true,
+	"bmp":  true,
+	"gif":  true,
+	"svs":  true,
+	"ndpi": true,
+	"dng":  true,
+}
+
+// Helper function
+func IsImageFormatSupported(format string) bool {
+	return SupportedImageFormats[strings.ToLower(format)]
+}
+
+// Liste olarak göstermek istersen
+func GetSupportedFormats() []string {
+	formats := make([]string, 0, len(SupportedImageFormats))
+	for format := range SupportedImageFormats {
+		formats = append(formats, format)
+	}
+	return formats
+}
 
 type Image struct {
 	ID            string      `firestore:"id"`
