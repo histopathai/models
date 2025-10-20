@@ -19,7 +19,7 @@ var SupportedImageFormats = []string{"jpeg", "png", "tiff", "bmp", "gif", "svs",
 
 type Image struct {
 	ID            string      `firestore:"id"`
-	Filename      string      `firestore:"filename"`
+	FileName      string      `firestore:"filename"`
 	Width         int         `firestore:"width"`
 	Height        int         `firestore:"height"`
 	Format        string      `firestore:"format"`
@@ -38,7 +38,7 @@ type Image struct {
 func (img *Image) ToMap() map[string]interface{} {
 	return map[string]interface{}{
 		"id":             img.ID,
-		"filename":       img.Filename,
+		"file_name":      img.FileName,
 		"width":          img.Width,
 		"height":         img.Height,
 		"format":         img.Format,
@@ -59,8 +59,8 @@ func (img *Image) FromMap(data map[string]interface{}) {
 	if v, ok := data["id"].(string); ok {
 		img.ID = v
 	}
-	if v, ok := data["filename"].(string); ok {
-		img.Filename = v
+	if v, ok := data["file_name"].(string); ok {
+		img.FileName = v
 	}
 	if v, ok := data["width"].(int64); ok {
 		img.Width = int(v)
