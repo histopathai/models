@@ -9,6 +9,8 @@ type Patient struct {
 	Gender    *string   `firestore:"gender,omitempty"`
 	Race      *string   `firestore:"race,omitempty"`
 	Disease   *string   `firestore:"disease,omitempty"`
+	SubType   *string   `firestore:"subtype,omitempty"`
+	Grade     *string   `firestore:"grade,omitempty"`
 	History   *string   `firestore:"history,omitempty"`
 	CreatedAt time.Time `firestore:"created_at"`
 	UpdatedAt time.Time `firestore:"updated_at"`
@@ -22,6 +24,8 @@ func (p *Patient) ToMap() map[string]interface{} {
 		"gender":     p.Gender,
 		"race":       p.Race,
 		"disease":    p.Disease,
+		"subtype":    p.SubType,
+		"grade":      p.Grade,
 		"history":    p.History,
 		"created_at": p.CreatedAt,
 		"updated_at": p.UpdatedAt,
@@ -45,6 +49,12 @@ func (p *Patient) FromMap(data map[string]interface{}) {
 	}
 	if v, ok := data["disease"].(string); ok {
 		p.Disease = &v
+	}
+	if v, ok := data["subtype"].(string); ok {
+		p.SubType = &v
+	}
+	if v, ok := data["grade"].(string); ok {
+		p.Grade = &v
 	}
 	if v, ok := data["history"].(string); ok {
 		p.History = &v
