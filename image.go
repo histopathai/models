@@ -24,6 +24,7 @@ type Image struct {
 	Height        int         `firestore:"height"`
 	Format        string      `firestore:"format"`
 	SizeBytes     int64       `firestore:"size_bytes"`
+	CreatorID     string      `firestore:"creator_id"`   // ID of the user who uploaded the image
 	WorkspaceID   string      `firestore:"workspace_id"` // ID of the associated workspace
 	PatientID     string      `firestore:"patient_id,omitempty"`
 	OriginPath    string      `firestore:"origin_path,omitempty"`
@@ -42,6 +43,7 @@ func (img *Image) ToMap() map[string]interface{} {
 		"height":         img.Height,
 		"format":         img.Format,
 		"size_bytes":     img.SizeBytes,
+		"creator_id":     img.CreatorID,
 		"workspace_id":   img.WorkspaceID,
 		"patient_id":     img.PatientID,
 		"origin_path":    img.OriginPath,
@@ -71,6 +73,9 @@ func (img *Image) FromMap(data map[string]interface{}) {
 	}
 	if v, ok := data["size_bytes"].(int64); ok {
 		img.SizeBytes = v
+	}
+	if v, ok := data["creator_id"].(string); ok {
+		img.CreatorID = v
 	}
 	if v, ok := data["workspace_id"].(string); ok {
 		img.WorkspaceID = v
