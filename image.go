@@ -45,7 +45,7 @@ func GetSupportedFormats() []string {
 
 type Image struct {
 	ID            string      `firestore:"id"`
-	FileName      string      `firestore:"filename"`
+	FileName      string      `firestore:"file_name"`
 	Width         int         `firestore:"width"`
 	Height        int         `firestore:"height"`
 	Format        string      `firestore:"format"`
