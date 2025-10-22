@@ -5,7 +5,7 @@ import "time"
 
 type Patient struct {
 	ID            string    `firestore:"id,omitempty"` // Firestore ID veya kendi ID'niz
-	AnonymousName string    `firestore:"anonymous_name,omitempty"`
+	AnonymousName string    `firestore:"anonymous_name"`
 	Age           *int      `firestore:"age,omitempty"`
 	Gender        *string   `firestore:"gender,omitempty"`
 	Race          *string   `firestore:"race,omitempty"`
