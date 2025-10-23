@@ -45,13 +45,13 @@ func GetSupportedFormats() []string {
 
 type Image struct {
 	ID            string      `firestore:"id"`
+	CreatorID     string      `firestore:"creator_id"` // ID of the user who uploaded the image
+	PatientID     string      `firestore:"patient_id,omitempty"`
 	FileName      string      `firestore:"file_name"`
 	Width         int         `firestore:"width"`
 	Height        int         `firestore:"height"`
 	Format        string      `firestore:"format"`
 	SizeBytes     int64       `firestore:"size_bytes"`
-	CreatorID     string      `firestore:"creator_id"` // ID of the user who uploaded the image
-	PatientID     string      `firestore:"patient_id,omitempty"`
 	OriginPath    string      `firestore:"origin_path,omitempty"`
 	ProcessedPath string      `firestore:"processed_path,omitempty"`
 	CreatedAt     time.Time   `firestore:"created_at"`
